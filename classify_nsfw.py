@@ -155,7 +155,7 @@ def get_score(file, model=default_model, pretrained_model=default_pretrained_mod
     print "NSFW score:  ", scores[1]
     return scores[1]
 
-def get_score_(file, nsfw_net, caffe_transformer):
+def get_score_net(file, nsfw_net, caffe_transformer):
     tmp_filename = ""
     if file.find('http') != -1:
         random_text =  "".join([random.choice(string.letters[:26]) for i in xrange(15)])
