@@ -1,10 +1,8 @@
-nsfw-docker
+nsfw-server
 ===========
 
 This project uses [Yahoo Open NSFW (Not Safe For Work)](https://github.com/yahoo/open_nsfw) to detect images that contain pornographic content.
 OpenNSFW uses Caffe pretrained neural network models and has a very big success rate.
-
-I have come across this problem on multiple projects, especially when there is user generated content, or content from an unreliable source that cannot be easily monitored. My solutions were not that good so I thought I'd give it a go.
 
 Since I found Caffe difficult to install, I modified the [Caffe Docker](https://github.com/BVLC/caffe/tree/master/docker) to create this project to run Yahoo Open NSFW. I have also modified the Yahoo script to accept remote urls instead of only local images.
 
@@ -21,59 +19,12 @@ To install:
 
 Run
 ===
-
-There are 2 ways to run nsfw-docker: 
-
-- Command Line: 
-    
-    
-        sudo docker run -ti caffe:cpu python ./classify_nsfw.py [url|localfile]
-    
-- For Example: 
-    
-    
-        sudo docker run -ti caffe:cpu python ./classify_nsfw.py http://www.personal.psu.edu/jul229/mini.jpg
-
 - As a web service (./run_server.sh as root):
     
-        sudo docker run -ti -p 7981:7981 caffe:cpu  python server.py 7981
+        docker run -ti -p 28000:28000 caffe:cpu  python server.py 7981
 
 Then to use the service:
 
-Visit: http://127.0.0.1:7981/[url] (Image link after final /)
+Visit: http://127.0.0.1:28000/[url] (Image link after final /)
 
-For example: [http://127.0.0.1:7981/http://www.personal.psu.edu/jul229/mini.jpg](http://127.0.0.1:7981/http://www.personal.psu.edu/jul229/mini.jpg)
-        
-
-     
-
-Sample Scores:
-==============
-
-![jpeg example](http://www.personal.psu.edu/jul229/mini.jpg)
-
-0.00936
-
-![jpeg example](http://i.dailymail.co.uk/i/pix/2016/02/09/18/3107B86000000578-0-Running_is_not_only_good_for_your_body_it_is_beneficial_to_the_b-a-15_1455043843929.jpg)
-
-0.0505
-
-![jpeg example](https://s-media-cache-ak0.pinimg.com/736x/2e/09/a9/2e09a9de5f5ae466a00934365fc1eb27.jpg)
-
-0.1126
-
-Windows:
---------
- 
-The ip for the web service is not 127.0.0.1. To find out the ip run in Docker Terminal:
- 
-     docker-machine ip default
-     
-Usually something like: 
-
-    192.168.99.100
-
-So the service can be accessed from: 
-    
-[http://192.168.99.100:7981](http://192.168.99.100:7981)
-    
+For example: [http://127.0.0.1:28000/http://www.personal.psu.edu/jul229/mini.jpg](http://127.0.0.1:28000/http://www.personal.psu.edu/jul229/mini.jpg)
