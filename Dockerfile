@@ -1,4 +1,4 @@
-FROM debian:stretch-slim
+FROM debian:buster-slim
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
@@ -13,8 +13,7 @@ RUN apt-get update \
     ffmpeg \
     libmagic-dev \
     file \
-    && pip3 install numpy \
-    && pip3 install requests \
+    && pip3 install numpy requests pillow \
     && rm -rf /var/lib/apt/lists/*
 
 ADD . /workspace/
