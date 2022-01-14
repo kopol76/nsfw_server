@@ -19,9 +19,8 @@ To install:
 
 Run
 ===
-- As a web service (./run_server.sh as root):
-    
-        docker run -ti -p 28000:28000 caffe:cpu  python server.py 7981
+- As a web service 
+   ./run_server.sh as root
 
 Then to use the service:
 
