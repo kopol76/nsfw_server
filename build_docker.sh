@@ -1,1 +1,1 @@
-docker build -t caffe:cpu .
+docker build -t nsfw_server:v1 -f Dockerfile .
